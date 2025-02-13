@@ -1,15 +1,20 @@
 'use client'
 
-import React, { useState } from "react";
+import dynamic from 'next/dynamic';
+import React, { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { GlobeDemo } from "./GridGlobe";
 import Lottie from "react-lottie";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
-import { BackgroundGradientAnimation } from "./GradBG";
 import MagicButton2 from "./MagicButton2";
 import Image from 'next/image';
+
+const BackgroundGradientAnimation = dynamic(
+  () => import('./GradBG').then((mod) => mod.BackgroundGradientAnimation),
+  { ssr: false }
+);
 
 export const BentoGrid = ({
   className,
@@ -51,10 +56,12 @@ export const BentoGridItem = ({
 }) => {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText('amr.eldeeb172@gmail.com');
-    setCopied(true);
-  }
+  const handleCopy = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText('amr.eldeeb172@gmail.com');
+      setCopied(true);
+    }
+  }, []);
   return (
     <div
       className={cn(
@@ -130,18 +137,18 @@ export const BentoGridItem = ({
       {id === 6 &&(
         <div className="mt-5 relative">
           <div
-           className={`absolute -bottom-0 right-0 `}
+           className={`absolute -bottom-5 right-0 `}
           >
             <Lottie options={{
               loop: copied,
               autoplay: copied,
-              animationData,
+              animationData: animationData,
               rendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
               }
             }}
-            height={100}
-            width={100}
+            height={200}
+            width={400}
             />
             </div>
             <MagicButton2 
