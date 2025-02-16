@@ -24,18 +24,21 @@ const Hero = () => {
       </div>
       <div className="flex justify-center items-center relative my-20 z-10">
           <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center">
-            <h2 className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">Crafting Intuitive Software Experiences</h2>
+            <h2 className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">Full Stack Developer & UI/UX Designer</h2>
             <TextGenerateEffect 
-            className="text-center text-[40px] md:text-5xl lg:text-7xl font-bold"
-            words="Turning ideas into streamlined digital solutions."
+              className="text-center text-[40px] md:text-5xl lg:text-7xl font-bold"
+              words="Building modern web experiences with purpose."
             />
             <p className="text-center md:tracking-wider mb-4 text-sm lg:text-2xl mt-4">
-              Hello, I&apos;m Amr. I&apos;m a full stack developer and a UI/UX designer. I&apos;m passionate about creating beautiful and functional websites and applications.
+              Hello, I&apos;m Amr. I specialize in creating responsive web applications 
+              with React, Next.js, and modern UI frameworks. Focused on delivering 
+              clean, efficient, and user-centric solutions.
             </p>
             <MagicButton
               className="mt-8 text-white text-lg sm:text-xl md:text-2xl py-4 px-8 sm:py-5 sm:px-10 md:py-6 md:px-12 lg:py-7 lg:px-14"
+              href="#projects"
             >
-             Show me your projects
+             View My Work
             </MagicButton>
           </div>
         </div>

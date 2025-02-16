@@ -1,4 +1,3 @@
-"use client";
 import dynamic from 'next/dynamic';
 import { navItems } from "@/data";
 
@@ -9,27 +8,22 @@ import RecentProjects from "@/components/RecentProjects";
 // Dynamic imports for components that use browser APIs
 const FloatingNav = dynamic(() => import("@/components/ui/FloatingNav"), {
   ssr: false,
-  loading: () => <div className="h-16">Loading nav...</div>
 });
 
 const Hero = dynamic(() => import("@/components/Hero"), {
   ssr: false,
-  loading: () => <div className="h-screen">Loading hero...</div>
 });
 
 const Grid = dynamic(() => import("@/components/Grid"), {
   ssr: false,
-  loading: () => <div className="h-screen">Loading grid...</div>
 });
 
 const Experience = dynamic(() => import("@/components/Experience"), {
   ssr: false,
-  loading: () => <div className="h-screen">Loading experience...</div>
 });
 
 const Approach = dynamic(() => import("@/components/Approach"), {
   ssr: false,
-  loading: () => <div className="h-screen">Loading approach...</div>
 });
 
 export default function Home() {

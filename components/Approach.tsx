@@ -14,7 +14,7 @@ const Approach = () => {
         <Card
           title="Planning & Strategy"
           icon={<AceternityIcon order="Phase 1" />}
-          description="fill in later"
+          description="First, I gather all the requirements and specifications from the client. Then, I create a detailed plan for the project, including timelines and milestones."
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -22,7 +22,7 @@ const Approach = () => {
           />
         </Card>
         <Card title="Development & Progress Update" icon={<AceternityIcon order="Phase 2" />}
-        description="fill in later"
+        description="I start the development process by creating the initial code and structure. Then, I regularly update the client on the progress of the project."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -35,7 +35,7 @@ const Approach = () => {
           />
         </Card>
         <Card title="Development & Launch" icon={<AceternityIcon order="Phase 3" />} 
-        description="fill in later"
+        description="I test the project to ensure it meets the client's requirements. Then, I launch the project and provide the client with the final product."
         >
           <CanvasRevealEffect
             animationSpeed={3}

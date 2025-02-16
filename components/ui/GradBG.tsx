@@ -67,12 +67,14 @@ export const BackgroundGradientAnimation = ({
 
   useEffect(() => {
     if (!isMounted) return;
-    function move() {
+    
+    const move = () => {
       if (!interactiveRef.current) return;
-      setCurX(prevX => prevX + (tgX - prevX) / 20);
-      setCurY(prevY => prevY + (tgY - prevY) / 20);
+      setCurX(prev => prev + (tgX - prev) / 20);
+      setCurY(prev => prev + (tgY - prev) / 20);
       interactiveRef.current.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
-    }
+    };
+
     move();
   }, [isMounted, tgX, tgY, curX, curY]);
 

@@ -80,36 +80,27 @@ export const navItems = [
     },
     {
       id: 2,
-      title: "fill in later",
-      des: "fill in later",
+      title: "To be updated",
+      des: "To be updated",
       img: "/p2.svg",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
       link: "",
     },
     {
       id: 3,
-      title: "fill in later",
-      des: "fill in later",
+      title: "To be updated",
+      des: "To be updated",
       img: "/p3.svg",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
       link: "",
     },
     {
       id: 4,
-      title: "fill in later",
-      des: "fill in later",
+      title: "To be updated",
+      des: "To be updated",
       img: "/p4.svg",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
       link: "",
-    },
-  ];
-  
-  export const testimonials = [
-    {
-      quote:
-        "fill in later",
-      name: "fill in later",
-      title: "fill in later",
     },
   ];
   
@@ -150,15 +141,15 @@ export const navItems = [
     {
       id: 1,
       title: "Software System Trainee",
-      desc: "fill in later",
+      desc: "Developed and maintained web systems. Collaborated with senior developers to implement new features and improve existing functionality.",
       className: "md:col-span-2",
       thumbnail: "/exp1.svg",
     },
     {
       id: 2,
       title: "IT Assistant",
-      desc: "fill in later",
-      className: "md:col-span-2", // change to md:col-span-2
+      desc: "Provided technical support and maintenance for computer systems. Assisted in network administration and hardware troubleshooting while ensuring optimal system performance.",
+      className: "md:col-span-2",
       thumbnail: "/exp2.svg",
     },
   ];
@@ -167,9 +158,11 @@ export const navItems = [
     {
       id: 1,
       img: "/git.svg",
+      link: "https://github.com/feuphoenix",
     },
     {
       id: 3,
       img: "/link.svg",
+      link: "https://www.linkedin.com/in/amr-eldeeb-cs/",
     },
   ];
