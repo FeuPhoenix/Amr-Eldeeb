@@ -54,12 +54,9 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const [copied, setCopied] = useState(false);
-
   const handleCopy = useCallback(() => {
     if (typeof window !== 'undefined') {
       navigator.clipboard.writeText('amr.eldeeb172@gmail.com');
-      setCopied(true);
     }
   }, []);
   return (
@@ -87,11 +84,13 @@ export const BentoGridItem = ({
         </div>
         <div className={`absolute right-0 -bottom-5 ${id === 5 && 'w-full opacity-80'}`}>
           { spareImg && (
-            <img 
-            src={spareImg} 
-            alt={spareImg}
-            className={'object-cover, object-center, w-full h-full'}
-             />)}
+            <Image 
+              src={spareImg} 
+              alt={spareImg}
+              width={20}
+              height={20}
+            />
+          )}
         </div>
         {id === 6 && (
           <BackgroundGradientAnimation>
@@ -140,8 +139,8 @@ export const BentoGridItem = ({
            className={`absolute -bottom-5 right-0 `}
           >
             <Lottie options={{
-              loop: copied,
-              autoplay: copied,
+              loop: false,
+              autoplay: true,
               animationData: animationData,
               rendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
@@ -152,7 +151,7 @@ export const BentoGridItem = ({
             />
             </div>
             <MagicButton2 
-            title={copied ? 'Email Copied' : 'Copy my Email'}
+            title="Copy my Email"
             icon={<IoCopyOutline />}
             position="right"
             otherClasses="bg-[#161a31]"

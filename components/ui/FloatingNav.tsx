@@ -9,6 +9,12 @@ import {
 import { cn } from "@/utils/cn";
 import Link from "next/link";
 
+interface NavItem {
+  name: string;
+  link: string;
+  icon?: JSX.Element;
+}
+
 const FloatingNav = ({
   navItems,
   className,
@@ -27,7 +33,7 @@ const FloatingNav = ({
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof current === "number") {
       const direction = current! - scrollYProgress.getPrevious()!;
-
+      
       if (scrollYProgress.get() < 0.05) {
         setVisible(false);
       } else {
@@ -59,7 +65,7 @@ const FloatingNav = ({
           className
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        {navItems.map((navItem: NavItem, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}

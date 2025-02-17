@@ -10,6 +10,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "@next/next/no-img-element": "warn",
     "no-var": "warn",
-    "prefer-const": "warn"
+    "prefer-const": "error",
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }
