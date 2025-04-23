@@ -72,11 +72,11 @@ export const navItems = [
   export const projects = [
     {
       id: 1,
-      title: "Virtual Boardgame Escape Room",
-      des: "A virtual escape room experience where players can solve puzzles and challenges to escape from a boardgame cafe.",
+      title: "To be updated",
+      des: "To be updated",
       img: "/p1.svg",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-      link: "https://feuphoenix.github.io/Escape-Room-Cafe/",
+      link: "",
     },
     {
       id: 2,

@@ -3,7 +3,7 @@ import { navItems } from "@/data";
 
 // Static imports for components that don't use browser APIs
 import Footer from "@/components/Footer";
-import RecentProjects from "@/components/RecentProjects";
+//import RecentProjects from "@/components/RecentProjects";
 
 // Dynamic imports for components that use browser APIs
 const FloatingNav = dynamic(() => import("@/components/ui/FloatingNav"), {
@@ -33,7 +33,6 @@ export default function Home() {
         <FloatingNav navItems={navItems} />
         <Hero />
         <Grid />
-        <RecentProjects />
         <Experience />
         <Approach />
         <Footer />

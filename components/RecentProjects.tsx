@@ -1,3 +1,4 @@
+/*
 "use client";
 import { projects } from "@/data";
 import React from "react";
@@ -61,3 +62,5 @@ const RecentProjects = () => {
 }
 
 export default RecentProjects;
+
+*/
