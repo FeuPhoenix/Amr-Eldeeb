@@ -23,15 +23,6 @@ A modern, dark-themed portfolio website showcasing my work as a Full Stack Devel
 - React Three Fiber
 
 
-4. **Open [http://localhost:8732](http://localhost:8732)**
-
-## 📱 Project Structure
-
-├── components/     # React components
-├── data/          # Project data and content
-├── public/        # Static assets
-└── lib/           # Utility functions
-
 ## 📧 Contact
 
 - LinkedIn: [Amr Eldeeb](https://www.linkedin.com/in/amr-eldeeb-cs/)
