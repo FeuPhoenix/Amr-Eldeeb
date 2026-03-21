@@ -72,36 +72,22 @@ export const navItems = [
   export const projects = [
     {
       id: 1,
-      title: "To be updated",
-      des: "To be updated",
-      img: "/p1.svg",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-      link: "",
+      title: "Body Level",
+      des: "A progressive calisthenics app with RPG-style skill trees, XP tracking, and 40+ exercises.",
+      img: "/p-bodylevel.png",
+      iconLists: ["/re.svg", "/ts.svg", "/tail.svg", "/git.svg"],
+      link: "https://body-level.vercel.app",
     },
     {
       id: 2,
-      title: "To be updated",
-      des: "To be updated",
-      img: "",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-      link: "",
+      title: "Sortak",
+      des: "AI-powered professional photo generation for studio-quality ID and passport photos.",
+      img: "/p-sortak.png",
+      iconLists: ["/re.svg", "/ts.svg", "/tail.svg", "/git.svg"],
+      link: "https://www.sortak.net",
     },
-    {
-      id: 3,
-      title: "To be updated",
-      des: "To be updated",
-      img: "",
-      iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-      link: "",
-    },
-    {
-      id: 4,
-      title: "To be updated",
-      des: "To be updated",
-      img: "",
-      iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-      link: "",
-    },
+  // { id: 3, title: "To be updated", des: "To be updated", img: "", iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"], link: "" },
+  // { id: 4, title: "To be updated", des: "To be updated", img: "", iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"], link: "" },
   ];
   
   export const companies = [
