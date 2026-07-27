@@ -2,6 +2,7 @@ import React from 'react'
 import MagicButton2 from './ui/MagicButton2'
 import { FaLocationArrow } from 'react-icons/fa'
 import { socialMedia, contact } from '@/data'
+import ContactForm from './ContactForm'
 
 const Footer = () => {
   return (
@@ -15,9 +16,9 @@ const Footer = () => {
             />
         </div>
         <div className="flex flex-col items-center">
-            <h1 className="heading lg:max-w-[45vw]">
+            <h2 className="heading lg:max-w-[45vw]">
                 Looking for someone who <span className="text-purple">ships</span>?
-            </h1>
+            </h2>
             <p className="text-center text-white-200 md:mt-10 my-5 text-lg max-w-2xl">
                 I&apos;m in {contact.location} and open to full-stack roles, on site or remote.
                 I&apos;m currently working while I look, so I can start with reasonable notice.
@@ -40,6 +41,7 @@ const Footer = () => {
                     Download my CV (PDF)
                 </a>
             </div>
+            <ContactForm />
             <p className="text-white-200 text-sm mt-6">
                 <a href={`mailto:${contact.email}`} className="hover:text-purple transition-colors">
                     {contact.email}

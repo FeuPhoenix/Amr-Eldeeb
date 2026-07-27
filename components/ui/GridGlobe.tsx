@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
@@ -7,6 +7,16 @@ const World = dynamic(() => import("./Globe").then((m) => m.World), {
 });
 
 export function GlobeDemo() {
+  // Honour prefers-reduced-motion by holding the globe still rather than
+  // removing it. Resolved in an effect since this is a static export.
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    setReducedMotion(
+      !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    );
+  }, []);
+
   const globeConfig = {
     pointSize: 4,
     globeColor: "#062056",
@@ -26,7 +36,7 @@ export function GlobeDemo() {
     rings: 1,
     maxRings: 3,
     initialPosition: { lat: 22.3193, lng: 114.1694 },
-    autoRotate: true,
+    autoRotate: !reducedMotion,
     autoRotateSpeed: 0.5,
   };
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];

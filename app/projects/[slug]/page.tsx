@@ -15,9 +15,27 @@ export function generateMetadata({
 }): Metadata {
   const project = projects.find((p) => p.slug === params.slug);
   if (!project) return {};
+
+  const title = `${project.title} — ${project.tagline}`;
+  const path = `/projects/${project.slug}`;
+
   return {
-    title: `${project.title} — ${project.tagline}`,
+    title,
     description: project.des,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "article",
+      title,
+      description: project.des,
+      url: path,
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.des,
+      images: ["/og.png"],
+    },
   };
 }
 

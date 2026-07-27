@@ -7,10 +7,10 @@ import { PinContainer } from "./ui/3d-pin";
 const RecentProjects = () => {
   return (
     <div className="py-20" id="projects">
-      <h1 className="heading">
+      <h2 className="heading">
         Things I&apos;ve {' '}
         <span className="text-purple">built</span>
-      </h1>
+      </h2>
       <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8 mt-10">
         {projects.map(({id, slug, title, des, img, stack}) => (
           <div key={id} className="sm:h-[41rem] h-[32rem] lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-[570px] w-[80vw]">
@@ -27,9 +27,9 @@ const RecentProjects = () => {
                   </span>
                 )}
               </div>
-              <h1 className="lg:text-2xl font-bold md:text-xl text-base line-clamp-1">
+              <h3 className="lg:text-2xl font-bold md:text-xl text-base line-clamp-1">
                 {title}
-              </h1>
+              </h3>
               <p className="lg:text-xl lg:font-normal font-light text-sm text-gray-400 line-clamp-2">
                 {des}
               </p>
