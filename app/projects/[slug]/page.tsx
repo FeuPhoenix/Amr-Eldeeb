@@ -61,8 +61,8 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
             ))}
           </div>
 
-          {(project.link || project.repo) && (
-            <div className="flex flex-wrap gap-5 mt-7">
+          {(project.link || project.repo || project.repoPrivate) && (
+            <div className="flex flex-wrap gap-x-6 gap-y-2 mt-7 items-center">
               {project.link && (
                 <a
                   href={project.link}
@@ -82,6 +82,12 @@ export default function CaseStudy({ params }: { params: { slug: string } }) {
                 >
                   View the code &rarr;
                 </a>
+              )}
+              {project.repoPrivate && (
+                <span className="text-sm text-white/50">
+                  Source is private &mdash; it&apos;s a shipped commercial product,
+                  but I&apos;m happy to walk through the code.
+                </span>
               )}
             </div>
           )}

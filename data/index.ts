@@ -87,6 +87,8 @@ export type Project = {
   stack: string[];
   link: string;
   repo: string;
+  /** Shipped commercial work whose source isn't public. */
+  repoPrivate?: boolean;
   year: string;
   role: string;
   caseStudy: {
@@ -108,6 +110,7 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Supabase", "PostgreSQL", "FastAPI", "Railway"],
     link: "https://www.sortak.net",
     repo: "",
+    repoPrivate: true,
     year: "2025 – present",
     role: "Capture flow and generation quality gate",
     caseStudy: {
@@ -201,35 +204,46 @@ export const projects: Project[] = [
     slug: "studywise",
     title: "StudyWise",
     tagline: "Study material that adapts to the student",
-    des: "An AI learning platform that reshapes study material to fit the student, using NLP over a Flask and Firebase backend. I led a team of four and built the REST layer connecting the backend to the clients.",
+    des: "A final-year AI study platform: upload a PDF or a lecture recording and get back flashcards, multiple-choice questions and a tutor you can ask about the material. I built the question generation and the difficulty model that adapts to how the student is actually performing.",
     img: "",
-    stack: ["Python", "Flask", "Firebase", "NLP", "REST APIs"],
+    stack: ["Python", "Flask", "Firebase", "NLP", "Jinja"],
     link: "",
     repo: "",
     year: "2024",
-    role: "Team lead and API layer",
+    role: "Question generation and adaptive difficulty",
     caseStudy: {
       problem: [
-        "Students are handed the same material regardless of what they already understand. The gap between a set of lecture notes and something a particular person can learn from is work that nobody does, because doing it by hand does not scale.",
-        "StudyWise was a final-year project aimed at that gap: use NLP to reshape source material to the student rather than expecting the student to adapt to the material.",
+        "Students are handed the same material regardless of what they already understand. Turning a set of lecture notes into something a particular person can learn from is work nobody does, because doing it by hand does not scale.",
+        "StudyWise was a final-year project aimed at that gap — take the material a student already has and reshape it into practice rather than expecting them to adapt to it.",
+        "The hard part is not generating a question. It is generating the right one. A quiz that stays easy teaches nothing and a quiz that jumps straight to hard is abandoned, so the system has to read how someone is doing and move with them.",
       ],
       approach: [
         {
-          heading: "Lead a team of four",
-          body: "This was the first time I was responsible for other people's work as well as my own — splitting the project into pieces that could progress in parallel, and keeping the interfaces between those pieces stable enough that they still fitted together at the end.",
+          heading: "Generate questions, then personalise them",
+          body: "I built the multiple-choice generation and tied it to the student's own performance, so the material adapts as they work through it rather than serving a fixed set. The difficulty algorithm went through several passes — getting a model that responds to a run of correct answers without whiplashing on a single mistake took more iterations than the generation itself.",
         },
         {
-          heading: "Own the seam between backend and clients",
-          body: "I designed and built the REST layer connecting the Flask backend and Firebase to the frontend clients. On a team project the API contract is where integration goes wrong, so it was the part worth being deliberate about.",
+          heading: "Take input in whatever form the student already has it",
+          body: "Study material does not arrive as clean text. I worked on the PDF path, including asking questions against a document directly, and on an audio pre-processor so a recorded lecture could be fed in as a source instead of only written notes.",
+        },
+        {
+          heading: "Close the loop with feedback",
+          body: "I added the statistics output so a student can see where they are weak rather than just receiving a score, plus flashcard generation as a lighter-weight way through the same material. Some of the work was defensive too — rate-limiting question requests so the generator could not be spammed.",
+        },
+        {
+          heading: "Work as part of a four-person team",
+          body: "This was a team project across four people, with the work split so pieces could progress in parallel and still fit together. It was the first project where I had to care about somebody else's interfaces as much as my own.",
         },
       ],
       stackDetail: [
-        { group: "Backend", items: "Python, Flask, REST APIs" },
+        { group: "Backend", items: "Python, Flask, server-rendered Jinja templates" },
         { group: "Data", items: "Firebase" },
-        { group: "Processing", items: "NLP for personalising study material" },
+        { group: "Processing", items: "NLP for question and flashcard generation, PDF parsing, audio pre-processing" },
       ],
       differently: [
-        "It was never deployed anywhere public, so it exists as a repository and a report rather than something anyone can use. Shipping even a rough hosted version would have been worth more than the extra features we built instead.",
+        "A Firebase service account key was committed to the repository. It is a university project that is no longer running, but a credential should never have been in version control — and the fix is to keep secrets in the environment from the first commit, not to remember to remove them later.",
+        "It was never deployed anywhere public, so it exists as a repository and a report rather than something anyone can use. Shipping even a rough hosted version would have been worth more than the last few features we added instead.",
+        "The difficulty model was tuned by feel against our own testing. It needed real students and a way to measure whether the adaptation actually helped anyone learn faster.",
       ],
     },
   },
