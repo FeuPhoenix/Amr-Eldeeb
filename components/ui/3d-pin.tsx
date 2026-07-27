@@ -8,12 +8,15 @@ export const PinContainer = ({
   children,
   title,
   href,
+  internal = false,
   className,
   containerClassName,
 }: {
   children: React.ReactNode;
   title?: string;
   href?: string;
+  /** In-site destinations navigate in place; external ones open a new tab. */
+  internal?: boolean;
   className?: string;
   containerClassName?: string;
 }) => {
@@ -32,7 +35,9 @@ export const PinContainer = ({
   // a link to nowhere.
   const Wrapper = href ? Link : "div";
   const wrapperProps = href
-    ? { href, target: "_blank", rel: "noopener noreferrer" }
+    ? internal
+      ? { href }
+      : { href, target: "_blank", rel: "noopener noreferrer" }
     : {};
 
   return (
