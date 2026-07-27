@@ -4,12 +4,15 @@ import dynamic from 'next/dynamic';
 import React, { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { GlobeDemo } from "./GridGlobe";
-import Lottie from "react-lottie";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 import MagicButton2 from "./MagicButton2";
 import Image from 'next/image';
+
+// react-lottie pulls in lottie-web, which touches `document` at module scope and
+// breaks the static export prerender. Load it in the browser only.
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 const BackgroundGradientAnimation = dynamic(
   () => import('./GradBG').then((mod) => mod.BackgroundGradientAnimation),
@@ -148,6 +151,9 @@ export const BentoGridItem = ({
             }}
             height={200}
             width={400}
+            // react-lottie calls eventListeners.forEach() on unmount without a
+            // default, which throws. Pass an empty array explicitly.
+            eventListeners={[]}
             />
             </div>
             <MagicButton2 

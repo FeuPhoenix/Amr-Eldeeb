@@ -14,7 +14,7 @@ const Experience = () => {
         {workExperience.map((card) => (
           <Button 
             key={card.id}
-            duration={Math.floor(Math.random() * 5000) + 5000}
+            duration={5000 + card.id * 1500}
             borderRadius="1.75rem"
             className="flex-1 text-white border-neutral-200 dark:border-slate-800 h-full"
           >

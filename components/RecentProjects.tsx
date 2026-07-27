@@ -1,17 +1,8 @@
 "use client";
 import { projects } from "@/data";
 import React from "react";
-import dynamic from "next/dynamic";
 import { FaLocationArrow } from "react-icons/fa";
-
-const PinContainer = dynamic(() => import("./ui/3d-pin").then(mod => mod.PinContainer), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center h-96">
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple"></div>
-    </div>
-  )
-});
+import { PinContainer } from "./ui/3d-pin";
 
 const RecentProjects = () => {
   return (
