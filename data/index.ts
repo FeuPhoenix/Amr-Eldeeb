@@ -242,7 +242,7 @@ export const projects: Project[] = [
       ],
       differently: [
         "A Firebase service account key was committed to the repository. It is a university project that is no longer running, but a credential should never have been in version control — and the fix is to keep secrets in the environment from the first commit, not to remember to remove them later.",
-        "It was never deployed anywhere public, so it exists as a repository and a report rather than something anyone can use. Shipping even a rough hosted version would have been worth more than the last few features we added instead.",
+        "There was a deployment, but it stopped serving and nobody noticed — so the project effectively exists as a repository and a report rather than something anyone can use. Getting a rough hosted version to stay up would have been worth more than the last few features we added instead.",
         "The difficulty model was tuned by feel against our own testing. It needed real students and a way to measure whether the adaptation actually helped anyone learn faster.",
       ],
     },
