@@ -7,7 +7,7 @@ const Experience = () => {
   return (
     <div className="py-20" id="experience">
       <h1 className="heading">
-        My <span className="text-purple">work experience</span>
+        Where I&apos;ve <span className="text-purple">been</span>
       </h1>
 
       <div className="w-full mt-12 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
@@ -31,7 +31,13 @@ const Experience = () => {
                 <h2 className="text-xl font-bold text-center">
                   {card.title}
                 </h2>
-                <p className="text-white/80 text-center text-sm leading-relaxed">
+                <p className="text-purple text-center text-sm font-medium">
+                  {card.company}
+                </p>
+                <p className="text-white/50 text-center text-xs">
+                  {card.period} &middot; {card.location}
+                </p>
+                <p className="text-white/80 text-center text-sm leading-relaxed mt-1">
                   {card.desc}
                 </p>
               </div>

@@ -8,21 +8,21 @@ const Approach = () => {
   return (
     <section className="w-full py-20" id="approach">
       <h1 className="heading">
-        My <span className="text-purple">Approach</span>
+        How I <span className="text-purple">work</span>
       </h1>
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center gap-4">
         <Card
-          title="Planning & Strategy"
-          icon={<AceternityIcon order="Phase 1" />}
-          description="First, I gather all the requirements and specifications from the client. Then, I create a detailed plan for the project, including timelines and milestones."
+          title="Understand it first"
+          icon={<AceternityIcon order="01" />}
+          description="Before I write anything I want to know who it's for and what happens if it's wrong. Sortak exists because passport photos get rejected over millimetres — the spec was the hard part, not the code."
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
             containerClassName="bg-emerald-900"
           />
         </Card>
-        <Card title="Development & Progress Update" icon={<AceternityIcon order="Phase 2" />}
-        description="I start the development process by creating the initial code and structure. Then, I regularly update the client on the progress of the project."
+        <Card title="Build the smallest real version" icon={<AceternityIcon order="02" />}
+        description="I'd rather have one path working end to end than five half-finished screens. Body Level started as a single skill tree with XP attached — everything else got added once that felt right to use."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -34,8 +34,8 @@ const Approach = () => {
             dotSize={2}
           />
         </Card>
-        <Card title="Development & Launch" icon={<AceternityIcon order="Phase 3" />} 
-        description="I test the project to ensure it meets the client's requirements. Then, I launch the project and provide the client with the final product."
+        <Card title="Ship it, then keep it alive" icon={<AceternityIcon order="03" />}
+        description="Deploying is the start, not the finish. Two of my projects are live and public right now, which means fixing the things real usage exposes — and a year on IT support taught me plenty about inheriting systems nobody documented."
         >
           <CanvasRevealEffect
             animationSpeed={3}

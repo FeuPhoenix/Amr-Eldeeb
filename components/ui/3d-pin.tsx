@@ -28,17 +28,23 @@ export const PinContainer = ({
     setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
   };
 
+  // Projects without a public URL (yet) render as a plain container rather than
+  // a link to nowhere.
+  const Wrapper = href ? Link : "div";
+  const wrapperProps = href
+    ? { href, target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
-    <Link
+    <Wrapper
       className={cn(
-        "relative group/pin z-50  cursor-pointer",
+        "relative group/pin z-50",
+        href && "cursor-pointer",
         containerClassName
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      href={href || "/"}
-      target="_blank"
-      rel="noopener noreferrer"
+      {...(wrapperProps as { href: string })}
     >
       <div
         style={{
@@ -57,7 +63,7 @@ export const PinContainer = ({
         </div>
       </div>
       <PinPerspective title={title} />
-    </Link>
+    </Wrapper>
   );
 };
 

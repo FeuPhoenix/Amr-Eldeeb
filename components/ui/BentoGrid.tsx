@@ -5,6 +5,7 @@ import React, { useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import { GlobeDemo } from "./GridGlobe";
 import animationData from "@/data/confetti.json";
+import { contact, techStack } from "@/data";
 import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 import MagicButton2 from "./MagicButton2";
@@ -59,7 +60,7 @@ export const BentoGridItem = ({
 }) => {
   const handleCopy = useCallback(() => {
     if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText('amr.eldeeb172@gmail.com');
+      navigator.clipboard.writeText(contact.email);
     }
   }, []);
   return (
@@ -76,20 +77,25 @@ export const BentoGridItem = ({
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
           { img && (
-            <Image 
-              src={img} 
-              alt={title?.toString() || 'Grid image'}
-              width={500}
-              height={300}
-              className={cn(imgClassName, 'object-cover object-center')}
+            <Image
+              src={img}
+              alt={id === 1 ? 'Amr Eldeeb' : ''}
+              aria-hidden={id === 1 ? undefined : true}
+              // The portrait in tile 1 is the only image sized to fill its tile;
+              // the rest are decorative and keep their original intrinsic box.
+              width={id === 1 ? 800 : 500}
+              height={id === 1 ? 1000 : 300}
+              priority={id === 1}
+              className={cn('object-cover object-center', imgClassName)}
             />
           )}
         </div>
         <div className={`absolute right-0 -bottom-5 ${id === 5 && 'w-full opacity-80'}`}>
           { spareImg && (
-            <Image 
-              src={spareImg} 
-              alt={spareImg}
+            <Image
+              src={spareImg}
+              alt=""
+              aria-hidden="true"
               width={20}
               height={20}
             />
@@ -113,7 +119,7 @@ export const BentoGridItem = ({
       {id === 3 && (
         <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
           <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-            {['React.js','Next.js','Typescript'].map((item) => (
+            {techStack.left.map((item) => (
               <span 
                 key={item} 
                 className="py-2 lg:py-3 px-3 lg:px-4 text-xs lg:text-sm opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E] text-white-200 hover:opacity-100 transition-opacity duration-200"
@@ -125,7 +131,7 @@ export const BentoGridItem = ({
           </div>
           <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
             <span className="py-5 lg:py-6 px-3 rounded-lg bg-[#10132E] opacity-30" />
-            {['Tailwind', 'Javascript', 'Git'].map((item) => (
+            {techStack.right.map((item) => (
               <span 
                 key={item} 
                 className="py-2 lg:py-3 px-3 lg:px-4 text-xs lg:text-sm opacity-50 lg:opacity-100 rounded-lg text-center bg-[#10132E] text-white-200 hover:opacity-100 transition-opacity duration-200"
