@@ -152,55 +152,6 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    slug: "body-level",
-    title: "Body Level",
-    tagline: "Calisthenics progression as a skill tree",
-    des: "Calisthenics training as an RPG skill tree. Exercises unlock as you earn XP, split across Push, Pull, Legs and Core, so progress feels like levelling up rather than logging sets. Built end to end — React and Redux on the front, an Express and MySQL API behind it.",
-    img: "/p-bodylevel.png",
-    stack: ["React", "TypeScript", "Redux Toolkit", "Express", "MySQL", "JWT"],
-    link: "https://body-level.vercel.app",
-    repo: "https://github.com/FeuPhoenix/BodyLevel",
-    year: "2025",
-    role: "Everything — design, frontend, API, schema",
-    caseStudy: {
-      problem: [
-        "Calisthenics is one of the few kinds of training where progression is genuinely structured: you cannot do a one-arm push-up until you can do a normal one, and a pull-up sits on top of a row. The dependencies are real, not motivational.",
-        "Every app I looked at flattened that into a checklist. A list of exercises tells you what exists; it does not tell you what you have earned or what is next. The structure that makes calisthenics legible was the exact thing the tooling threw away.",
-        "So the question was whether the dependency graph could be the interface rather than something buried in an article — and whether unlocking the next movement could feel like the reward it actually is.",
-      ],
-      approach: [
-        {
-          heading: "Model the prerequisites as data, not as copy",
-          body: "The schema has a dedicated skill_prerequisites table alongside skills and user_skill_progress. Prerequisites are edges in a graph, which means the tree is generated from the database rather than hardcoded in the UI, and adding a movement is a row rather than a component. Six tables in total, covering users, profiles, sessions, skills, prerequisites and per-user progress.",
-        },
-        {
-          heading: "Let progress drive what the UI reveals",
-          body: "A skill's state is derived from whether its prerequisites are satisfied for that user, so locked, available and completed are computed rather than stored as flags that can drift. Redux Toolkit holds the tree state; category filters across Push, Pull, Legs and Core narrow the graph without refetching.",
-        },
-        {
-          heading: "Build the smallest real version first",
-          body: "It started as a single skill tree with XP attached and nothing else — no auth, no profiles, no achievements. Getting one path working end to end told me whether the core idea was actually satisfying to use before I spent time on the surrounding product. Everything else got added once that felt right.",
-        },
-        {
-          heading: "Own the backend rather than reaching for a BaaS",
-          body: "I wrote the API in Express with TypeScript against MySQL, with JWT sessions, bcrypt password hashing and cookie-based auth. Using a hosted backend would have been faster, but I wanted to write the schema, the queries and the auth myself — the point of the project was partly to stop treating the server as someone else's problem.",
-        },
-      ],
-      stackDetail: [
-        { group: "Frontend", items: "React, TypeScript, Redux Toolkit, React Router, Material-UI, Emotion, Framer Motion" },
-        { group: "Backend", items: "Express, TypeScript, MySQL (mysql2), with a separate server tsconfig and build step" },
-        { group: "Auth", items: "JSON Web Tokens, bcryptjs password hashing, cookie-parser, CORS" },
-        { group: "Data", items: "Six-table MySQL schema — users, user_profiles, user_sessions, skills, skill_prerequisites, user_skill_progress" },
-      ],
-      differently: [
-        "The API and the client live in one repository with separate TypeScript configs, and the deployed build does not run the Express server. The hosting story should have been decided before I wrote the backend, not after.",
-        "A .env file went into the repository. Nothing in it is live — local host, empty password, placeholder secret — but it should never have been committed, and .gitignore should have covered it from the first commit.",
-        "There are no tests around the prerequisite logic, which is the one piece where a bug is invisible: a wrong edge does not crash anything, it just quietly unlocks something too early.",
-      ],
-    },
-  },
-  {
-    id: 3,
     slug: "otiumate",
     title: "Otiumate",
     tagline: "The public face of my AI studio",
@@ -245,6 +196,55 @@ export const projects: Project[] = [
         "The stat counters on the About section ship with em-dash placeholders instead of numbers. Better an honest blank than an invented figure, but it is a gap the design clearly expects to be filled, and it should have shipped with real numbers or a different layout.",
         "Content lives in typed files, which is ideal for me and still a barrier for a non-technical founder — editing a .ts file in GitHub is not the same as editing a page. A hosted CMS would have removed me from the loop entirely.",
         "There are no tests. For a marketing site that is a defensible trade, but the contact form is the one path where a silent failure costs real money, and that deserved coverage.",
+      ],
+    },
+  },
+  {
+    id: 3,
+    slug: "body-level",
+    title: "Body Level",
+    tagline: "Calisthenics progression as a skill tree",
+    des: "Calisthenics training as an RPG skill tree. Exercises unlock as you earn XP, split across Push, Pull, Legs and Core, so progress feels like levelling up rather than logging sets. Built end to end — React and Redux on the front, an Express and MySQL API behind it.",
+    img: "/p-bodylevel.png",
+    stack: ["React", "TypeScript", "Redux Toolkit", "Express", "MySQL", "JWT"],
+    link: "https://body-level.vercel.app",
+    repo: "https://github.com/FeuPhoenix/BodyLevel",
+    year: "2025",
+    role: "Everything — design, frontend, API, schema",
+    caseStudy: {
+      problem: [
+        "Calisthenics is one of the few kinds of training where progression is genuinely structured: you cannot do a one-arm push-up until you can do a normal one, and a pull-up sits on top of a row. The dependencies are real, not motivational.",
+        "Every app I looked at flattened that into a checklist. A list of exercises tells you what exists; it does not tell you what you have earned or what is next. The structure that makes calisthenics legible was the exact thing the tooling threw away.",
+        "So the question was whether the dependency graph could be the interface rather than something buried in an article — and whether unlocking the next movement could feel like the reward it actually is.",
+      ],
+      approach: [
+        {
+          heading: "Model the prerequisites as data, not as copy",
+          body: "The schema has a dedicated skill_prerequisites table alongside skills and user_skill_progress. Prerequisites are edges in a graph, which means the tree is generated from the database rather than hardcoded in the UI, and adding a movement is a row rather than a component. Six tables in total, covering users, profiles, sessions, skills, prerequisites and per-user progress.",
+        },
+        {
+          heading: "Let progress drive what the UI reveals",
+          body: "A skill's state is derived from whether its prerequisites are satisfied for that user, so locked, available and completed are computed rather than stored as flags that can drift. Redux Toolkit holds the tree state; category filters across Push, Pull, Legs and Core narrow the graph without refetching.",
+        },
+        {
+          heading: "Build the smallest real version first",
+          body: "It started as a single skill tree with XP attached and nothing else — no auth, no profiles, no achievements. Getting one path working end to end told me whether the core idea was actually satisfying to use before I spent time on the surrounding product. Everything else got added once that felt right.",
+        },
+        {
+          heading: "Own the backend rather than reaching for a BaaS",
+          body: "I wrote the API in Express with TypeScript against MySQL, with JWT sessions, bcrypt password hashing and cookie-based auth. Using a hosted backend would have been faster, but I wanted to write the schema, the queries and the auth myself — the point of the project was partly to stop treating the server as someone else's problem.",
+        },
+      ],
+      stackDetail: [
+        { group: "Frontend", items: "React, TypeScript, Redux Toolkit, React Router, Material-UI, Emotion, Framer Motion" },
+        { group: "Backend", items: "Express, TypeScript, MySQL (mysql2), with a separate server tsconfig and build step" },
+        { group: "Auth", items: "JSON Web Tokens, bcryptjs password hashing, cookie-parser, CORS" },
+        { group: "Data", items: "Six-table MySQL schema — users, user_profiles, user_sessions, skills, skill_prerequisites, user_skill_progress" },
+      ],
+      differently: [
+        "The API and the client live in one repository with separate TypeScript configs, and the deployed build does not run the Express server. The hosting story should have been decided before I wrote the backend, not after.",
+        "A .env file went into the repository. Nothing in it is live — local host, empty password, placeholder secret — but it should never have been committed, and .gitignore should have covered it from the first commit.",
+        "There are no tests around the prerequisite logic, which is the one piece where a bug is invisible: a wrong edge does not crash anything, it just quietly unlocks something too early.",
       ],
     },
   },

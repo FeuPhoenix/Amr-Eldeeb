@@ -124,7 +124,7 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-2 self-start rounded-lg bg-[#161a31] border border-white/[0.15] px-7 py-3 text-white font-medium hover:border-purple/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple disabled:opacity-60 transition-colors"
+        className="mt-2 self-center w-full sm:w-56 h-12 rounded-lg bg-[#161a31] border border-white/[0.15] text-white text-sm font-medium hover:border-purple/60 hover:bg-[#1b2040] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple disabled:opacity-60 transition-colors"
       >
         {status === "sending" ? "Sending…" : "Send message"}
       </button>

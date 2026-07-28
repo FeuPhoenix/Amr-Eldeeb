@@ -25,12 +25,20 @@ const Footer = () => {
                 I&apos;m currently working while I look, so I can start with reasonable notice.
                 The fastest way to reach me is email &mdash; I answer everything.
             </p>
-            <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
-                <a href={`mailto:${contact.email}`}>
+            {/* Both actions are the same height and width and sit on one
+                baseline. MagicButton2 ships with md:mt-10 and md:w-60 baked in,
+                which pushed the email button 40px below its neighbour and made
+                the pair mismatched, so both are overridden here. */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 w-full max-w-xl">
+                <a
+                    href={`mailto:${contact.email}`}
+                    className="w-full sm:w-56 shrink-0"
+                >
                     <MagicButton2
                     title="Email me"
                     icon={<FaLocationArrow />}
                     position="right"
+                    containerClasses="md:mt-0 w-full md:w-full"
                     >
                     </MagicButton2>
                 </a>
@@ -40,7 +48,7 @@ const Footer = () => {
                 <a
                     href={contact.cv}
                     download
-                    className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg bg-[#161a31] border border-white/[0.15] text-white text-sm font-medium hover:border-purple/60 hover:bg-[#1b2040] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple transition-colors"
+                    className="w-full sm:w-56 shrink-0 inline-flex items-center justify-center gap-2 h-12 rounded-lg bg-[#161a31] border border-white/[0.15] text-white text-sm font-medium hover:border-purple/60 hover:bg-[#1b2040] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple transition-colors"
                 >
                     <FaFileArrowDown />
                     Download my CV
