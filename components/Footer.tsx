@@ -1,6 +1,7 @@
 import React from 'react'
 import MagicButton2 from './ui/MagicButton2'
 import { FaLocationArrow } from 'react-icons/fa'
+import { FaFileArrowDown } from 'react-icons/fa6'
 import { socialMedia, contact } from '@/data'
 import ContactForm from './ContactForm'
 
@@ -33,12 +34,16 @@ const Footer = () => {
                     >
                     </MagicButton2>
                 </a>
+                {/* Recruiters are the primary audience, so the CV gets the same
+                    visual weight as the email button rather than reading as a
+                    footnote beside it. */}
                 <a
                     href={contact.cv}
                     download
-                    className="text-white-200 text-sm underline underline-offset-4 hover:text-purple transition-colors"
+                    className="inline-flex items-center justify-center gap-2 h-12 px-7 rounded-lg bg-[#161a31] border border-white/[0.15] text-white text-sm font-medium hover:border-purple/60 hover:bg-[#1b2040] focus:outline-none focus-visible:ring-2 focus-visible:ring-purple transition-colors"
                 >
-                    Download my CV (PDF)
+                    <FaFileArrowDown />
+                    Download my CV
                 </a>
             </div>
             <ContactForm />
