@@ -32,8 +32,8 @@ const Hero = () => {
             />
             <p className="text-center md:tracking-wider mb-4 text-sm lg:text-2xl mt-4">
               I&apos;m Amr. I&apos;ve been writing code since 2020 and graduated in
-              Computer Science in 2024. Since then I&apos;ve worked on three real
-              products &mdash; two live on the internet right now, one of them
+              Computer Science in 2024. Since then I&apos;ve worked on four real
+              products &mdash; three live on the internet right now, one of them
               taking payments. Come have a look.
             </p>
             <MagicButton

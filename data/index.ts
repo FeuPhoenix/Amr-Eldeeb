@@ -201,6 +201,55 @@ export const projects: Project[] = [
   },
   {
     id: 3,
+    slug: "otiumate",
+    title: "Otiumate",
+    tagline: "The public face of my AI studio",
+    des: "The public face of my startup — an AI automation and products studio in Cairo. Designed, built and shipped entirely by me, on a custom domain. Four runtime dependencies and no UI kit: every component, animation and interaction is hand-built.",
+    img: "/p-otiumate.png",
+    stack: ["React", "TypeScript", "Vite", "Tailwind", "Framer Motion", "Vercel"],
+    link: "https://www.otiumate.com",
+    repo: "https://github.com/FeuPhoenix/otiumate",
+    year: "2026",
+    role: "Design, build and deploy — start to finish",
+    caseStudy: {
+      problem: [
+        "Otiumate is an AI automation and products studio. When a studio's whole pitch is that it can build things other teams can't, its own website is the first proof — or the first contradiction. A generic template would have undercut the sales conversation before it started.",
+        "It also had to work as an actual business tool: explain what we do to people who know they want AI but not what to ask for, show the work, introduce the team, and get someone to make contact.",
+        "And it had to be maintainable by people who are not me. If every copy change needed a developer, the site would go stale within a month.",
+      ],
+      approach: [
+        {
+          heading: "Separate the content from the code",
+          body: "Team members, projects, tech stack and testimonials each live in a plain TypeScript file under src/data. Changing a bio, adding a project or reordering the stack means editing an array — no component code, no JSX, no build knowledge. It is the smallest thing that behaves like a CMS without being one, and it is the reason the site can be kept current by whoever is free.",
+        },
+        {
+          heading: "Build the interface rather than install it",
+          body: "Four runtime dependencies: React, React DOM, Framer Motion and Lucide for icons. No component library. The preloader, custom cursor, scroll progress bar, film-grain overlay, project modal, team slideshow and tech marquee are all written from scratch. On a studio site the interface is the portfolio, so reaching for shadcn would have meant showing someone else's taste.",
+        },
+        {
+          heading: "Make the page feel alive without making it heavy",
+          body: "The hero sits on an animated constellation field, and the navbar carries a live Cairo clock with an online/offline indicator — small signals that a person is behind this. Framer Motion handles the section transitions. The whole thing is a static Vite build, so none of that costs a server.",
+        },
+        {
+          heading: "Treat the deploy as part of the build",
+          body: "vercel.json sets security headers on every response — X-Frame-Options, X-Content-Type-Options, Referrer-Policy, XSS protection — and marks the hashed asset bundle immutable with a one-year cache. SPA rewrites send every route to index.html so deep links survive a refresh. Custom domain on Vercel, DNS included.",
+        },
+      ],
+      stackDetail: [
+        { group: "Frontend", items: "React 18, TypeScript, Vite 5, Tailwind CSS v3 with custom CSS variables" },
+        { group: "Motion", items: "Framer Motion 11 for section transitions, preloader and the constellation hero" },
+        { group: "Content", items: "Typed data modules for team, projects, stack and testimonials — editable without touching components" },
+        { group: "Infra", items: "Vercel with a custom domain, security headers and immutable asset caching configured in vercel.json" },
+      ],
+      differently: [
+        "The stat counters on the About section ship with em-dash placeholders instead of numbers. Better an honest blank than an invented figure, but it is a gap the design clearly expects to be filled, and it should have shipped with real numbers or a different layout.",
+        "Content lives in typed files, which is ideal for me and still a barrier for a non-technical founder — editing a .ts file in GitHub is not the same as editing a page. A hosted CMS would have removed me from the loop entirely.",
+        "There are no tests. For a marketing site that is a defensible trade, but the contact form is the one path where a silent failure costs real money, and that deserved coverage.",
+      ],
+    },
+  },
+  {
+    id: 4,
     slug: "studywise",
     title: "StudyWise",
     tagline: "Study material that adapts to the student",

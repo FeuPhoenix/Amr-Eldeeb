@@ -46,7 +46,7 @@ const Approach = () => {
           />
         </Card>
         <Card title="Ship it, then keep it alive" icon={<AceternityIcon order="03" />}
-        description="Deploying is the start, not the finish. Two of my projects are live and public right now, which means fixing the things real usage exposes — and a year on IT support taught me plenty about inheriting systems nobody documented."
+        description="Deploying is the start, not the finish. Three of my projects are live and public right now, two of them on their own domains, which means fixing the things real usage exposes — and a year on IT support taught me plenty about inheriting systems nobody documented."
         >
           <CanvasRevealEffect
             animationSpeed={3}
