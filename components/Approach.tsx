@@ -2,27 +2,38 @@
 import React from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
+import dynamic from "next/dynamic";
+
+// CanvasRevealEffect is a react-three-fiber canvas and only ever renders on
+// hover or focus, so there is no reason for three.js to be in the initial
+// bundle. Loading it on demand keeps it off the critical path.
+const CanvasRevealEffect = dynamic(
+  () =>
+    import("@/components/ui/CanvasRevealEffect").then(
+      (m) => m.CanvasRevealEffect
+    ),
+  { ssr: false }
+);
 
 const Approach = () => {
   return (
     <section className="w-full py-20" id="approach">
-      <h1 className="heading">
-        My <span className="text-purple">Approach</span>
-      </h1>
+      <h2 className="heading">
+        How I <span className="text-purple">work</span>
+      </h2>
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center gap-4">
         <Card
-          title="Planning & Strategy"
-          icon={<AceternityIcon order="Phase 1" />}
-          description="First, I gather all the requirements and specifications from the client. Then, I create a detailed plan for the project, including timelines and milestones."
+          title="Understand it first"
+          icon={<AceternityIcon order="01" />}
+          description="Before I write anything I want to know who it's for and what happens if it's wrong. Sortak exists because passport photos get rejected over millimetres — the spec was the hard part, not the code."
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
             containerClassName="bg-emerald-900"
           />
         </Card>
-        <Card title="Development & Progress Update" icon={<AceternityIcon order="Phase 2" />}
-        description="I start the development process by creating the initial code and structure. Then, I regularly update the client on the progress of the project."
+        <Card title="Build the smallest real version" icon={<AceternityIcon order="02" />}
+        description="I'd rather have one path working end to end than five half-finished screens. Body Level started as a single skill tree with XP attached — everything else got added once that felt right to use."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -34,8 +45,8 @@ const Approach = () => {
             dotSize={2}
           />
         </Card>
-        <Card title="Development & Launch" icon={<AceternityIcon order="Phase 3" />} 
-        description="I test the project to ensure it meets the client's requirements. Then, I launch the project and provide the client with the final product."
+        <Card title="Ship it, then keep it alive" icon={<AceternityIcon order="03" />}
+        description="Deploying is the start, not the finish. Three of my projects are live and public right now, two of them on their own domains, which means fixing the things real usage exposes — and a year on IT support taught me plenty about inheriting systems nobody documented."
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -59,12 +70,20 @@ const Card = ({
   children?: React.ReactNode;
   description: string;
 }) => {
-  const [hovered, setHovered] = React.useState(false);
+  const [active, setActive] = React.useState(false);
+
+  // The canvas reveal is decoration layered behind text that is always
+  // readable. It used to be the other way round: the title and description
+  // were opacity-0 until :hover, which hid them entirely on touch devices and
+  // from anyone navigating by keyboard.
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="border border-black/[0.2] group/canvas-card flex items-center justify-center dark:border-white/[0.2]  max-w-sm w-full mx-auto p-4 relative lg:h-[35rem] rounded-3xl"
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => setActive(false)}
+      onFocus={() => setActive(true)}
+      onBlur={() => setActive(false)}
+      tabIndex={0}
+      className="border border-black/[0.2] group/canvas-card flex flex-col items-center justify-center dark:border-white/[0.2] max-w-sm w-full mx-auto p-8 relative lg:h-[35rem] rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-purple focus-visible:ring-offset-2 focus-visible:ring-offset-black-100"
     >
       <Icon className="absolute h-6 w-6 -top-3 -left-3 dark:text-white text-black" />
       <Icon className="absolute h-6 w-6 -bottom-3 -left-3 dark:text-white text-black" />
@@ -72,27 +91,25 @@ const Card = ({
       <Icon className="absolute h-6 w-6 -bottom-3 -right-3 dark:text-white text-black" />
 
       <AnimatePresence>
-        {hovered && (
+        {active && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="h-full w-full absolute inset-0"
+            exit={{ opacity: 0 }}
+            aria-hidden="true"
+            className="h-full w-full absolute inset-0 rounded-3xl overflow-hidden"
           >
             {children}
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="relative z-20">
-        <div className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]  group-hover/canvas-card:opacity-0 transition duration-200 w-full  mx-auto flex items-center justify-center">
-          {icon}
-        </div>
-        <h2 className="dark:text-white opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 text-center text-3xl">
-          {title}
-        </h2>
-        <h2 className="text-sm dark:text-white opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 text-center" style={{ color: '#e4ecff'}} >
+      <div className="relative z-20 flex flex-col items-center text-center">
+        <div className="mb-6 flex items-center justify-center">{icon}</div>
+        <h3 className="text-white font-bold text-2xl lg:text-3xl">{title}</h3>
+        <p className="text-white-200 text-sm lg:text-base mt-4 leading-relaxed">
           {description}
-        </h2>
+        </p>
       </div>
     </div>
   );

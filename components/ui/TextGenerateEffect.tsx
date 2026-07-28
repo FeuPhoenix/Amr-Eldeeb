@@ -8,11 +8,14 @@ export const TextGenerateEffect = ({
   className,
   filter = true,
   duration = 0.5,
+  as: Tag = "div",
 }: {
   words: string;
   className?: string;
   filter?: boolean;
   duration?: number;
+  /** Lets the caller make this the page's real heading rather than a div. */
+  as?: "div" | "h1" | "h2";
 }) => {
   const [scope, animate] = useAnimate();
   const wordsArray = words.split(" ");
@@ -52,12 +55,12 @@ export const TextGenerateEffect = ({
   };
 
   return (
-    <div className={cn("font-bold", className)}>
+    <Tag className={cn("font-bold", className)}>
       <div className="mt-4">
         <div className=" dark:text-white text-black leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>
-    </div>
+    </Tag>
   );
 };
