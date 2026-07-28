@@ -85,9 +85,9 @@ Then redeploy so the new value is baked into the build.
 will happily index both. Two copies of the same site split your ranking and
 Google picks a winner you don't control.
 
-The canonical tags added in step 4 already tell Google which one is real. To
-close it off completely, add this `redirects` block to `vercel.json` alongside
-the existing `headers`:
+Handled in the Vercel dashboard rather than vercel.json: Domains -> Edit on
+amr-eldeeb.vercel.app -> "Redirect to Another Domain" -> 308 -> amreldeebdev.com.
+A `redirects` block with a `has: host` condition in vercel.json was tried first
 
 ```json
 "redirects": [
