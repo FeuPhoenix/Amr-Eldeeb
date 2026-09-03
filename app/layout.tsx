@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { siteConfig, siteUrl } from "@/data/site";
 
 const geistSans = localFont({
@@ -118,6 +121,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >{children}
         </ThemeProvider>
+        <GoogleAnalytics />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
